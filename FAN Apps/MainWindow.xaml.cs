@@ -20,18 +20,19 @@ namespace FAN_Apps
     /// </summary>
     public partial class MainWindow : Window
     {
-        int column = 0;
-        int row = 0;
+        int column = 1;
+        int row = 1;
         public MainWindow()
         {
             InitializeComponent();
+            add_textbox();
         }
 
         public void add_textbox()
         {
-            for (int i = 0; column > i; i++)
+            for (int i = 1; column > i; i++)
             {
-                int j = 0;
+                int j = 1;
                 add_textbox_column(i, j);
                 for (j = 1; row > j; j++)
                 {
@@ -45,6 +46,7 @@ namespace FAN_Apps
             TextBox newtextbox = new TextBox();
             newtextbox.Text = column + ", " + row;
             newtextbox.Name = "T" + column.ToString() + row.ToString();
+            //MessageBox.Show(newtextbox.Name.ToString());
             this.stack_horizontal.Children.Add(newtextbox);
         }
 
@@ -59,21 +61,21 @@ namespace FAN_Apps
         public void delete_all_textbox(int column, int row)
         {
             
-            for (int i = 0; i < column; i++)
+            for (int i = 1; i < column; i++)
             {
-                int j = 0;
+                int j = 1;
 
                 TextBox textbox_column = new TextBox();
                 textbox_column.Name = "T" + i.ToString() + j.ToString();
-                //MessageBox.Show(textbox_column.Name.ToString());
-                stack_vertical.Children.Remove((UIElement)this.FindName("T" + i.ToString() + j.ToString()));
+                MessageBox.Show(textbox_column.Name.ToString());
+                stack_horizontal.Children.Remove((UIElement)this.FindName("T" + i.ToString() + j.ToString()));
                
 
                 for (j = 1; j < row; j++)
                 {
                     TextBox textbox = new TextBox();
                     textbox.Name = "T" + i.ToString() + j.ToString();
-                    stack_horizontal.Children.Remove((UIElement)this.FindName("T" + i.ToString() + j.ToString()));
+                    stack_vertical.Children.Remove((UIElement)this.FindName("T" + i.ToString() + j.ToString()));
                 }
             }
 
